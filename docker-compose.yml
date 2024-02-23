@@ -1,0 +1,23 @@
+﻿version: '3.8'
+
+services:
+  go-fiber:
+    image: go-fiber
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      - MONGODB_URI=mongodb://mongodb
+      - DATABASE=todos
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    # volumes:
+    #   - /data/mongo:/data/db
+    attach: false

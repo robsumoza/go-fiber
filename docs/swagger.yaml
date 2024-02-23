@@ -1,0 +1,25 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    name: Roberto Sumoza
+  description: An example template of a Golang simple backend API using Fiber
+  license:
+    name: MIT
+  title: go-fiber
+  version: 0.0.1
+paths:
+  /api/health:
+    get:
+      consumes:
+      - '*/*'
+      description: get the status of server.
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+      summary: Show the health status of the APIx.
+      tags:
+      - healthcheck
+swagger: "2.0"

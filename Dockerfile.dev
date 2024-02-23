@@ -1,0 +1,17 @@
+FROM golang:1.22-alpine
+
+# create a working directory inside the image
+WORKDIR /app
+
+# copy Go modules and dependencies to image
+COPY go.mod go.sum ./
+
+# download Go modules and dependencies
+RUN go mod download
+
+RUN go install github.com/cosmtrek/air@latest
+
+# copy directory files i.e all files ending with .go
+COPY . .
+
+CMD ["air"]

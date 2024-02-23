@@ -1,6 +1,9 @@
 package main
 
-import "github.com/robsumoza/go-fiber/api"
+import (
+	"github.com/robsumoza/go-fiber/app"
+	_ "github.com/robsumoza/go-fiber/docs"
+)
 
 // @title go-fiber
 // @version 0.0.1
@@ -10,5 +13,9 @@ import "github.com/robsumoza/go-fiber/api"
 // @host localhost:8080
 // @BasePath /
 func main() {
-	api.Run()
+	// setup and run app
+	err := app.SetupAndRunApp()
+	if err != nil {
+		panic(err)
+	}
 }

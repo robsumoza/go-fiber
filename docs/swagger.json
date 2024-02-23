@@ -1,0 +1,38 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "An example template of a Golang simple backend API using Fiber",
+        "title": "go-fiber",
+        "contact": {
+            "name": "Roberto Sumoza"
+        },
+        "license": {
+            "name": "MIT"
+        },
+        "version": "0.0.1"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/api/health": {
+            "get": {
+                "description": "get the status of server.",
+                "consumes": [
+                    "*/*"
+                ],
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "healthcheck"
+                ],
+                "summary": "Show the health status of the APIx.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

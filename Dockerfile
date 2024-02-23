@@ -10,17 +10,17 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # copy directory files i.e all files ending with .go
-COPY *.go ./
+COPY . .
 
 ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 
-RUN go build ldflags="-s -w" -o /app .
+RUN go build -ldflags="-s -w" -o /server
 
 FROM scratch
 
 WORKDIR /
 
-COPY --from=build /app /app
+COPY --from=build /server .
 
 COPY --from=build /etc/passwd /etc/passwd
 
@@ -28,4 +28,4 @@ USER 1001
 
 EXPOSE 8080
 
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/server"]
